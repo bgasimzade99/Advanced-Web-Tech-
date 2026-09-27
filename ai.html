@@ -3,103 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artificial Intelligence</title>
+    <meta name="description" content="Introduction to Artificial Intelligence and its impact on modern technology">
+    <title>Artificial Intelligence | Babak Gasimzade</title>
 
     <style>
+        :root {
+            --background: #070b14;
+            --surface: #0d1424;
+            --surface-light: #121c30;
+            --primary: #3b82f6;
+            --primary-light: #60a5fa;
+            --heading: #f8fafc;
+            --text: #a9b4c7;
+            --border: rgba(148, 163, 184, 0.15);
+        }
+
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #09090b;
-            color: #e4e4e7;
-            line-height: 1.7;
+            min-height: 100vh;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at 80% 10%, rgba(37, 99, 235, 0.18), transparent 28%),
+                radial-gradient(circle at 10% 40%, rgba(59, 130, 246, 0.08), transparent 25%),
+                var(--background);
+            color: var(--text);
+            line-height: 1.75;
         }
 
         .container {
-            max-width: 1100px;
-            margin: 60px auto;
-            padding: 50px;
+            width: min(1150px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 70px 0;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 70px;
+        }
+
+        .brand {
+            color: var(--heading);
+            font-size: 17px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        .hero {
+            max-width: 900px;
+            padding: 40px 0 65px;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 7px 13px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            border-radius: 999px;
+            color: var(--primary-light);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
         }
 
         h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            color: #ffffff;
+            margin: 0;
+            color: var(--heading);
+            font-size: clamp(48px, 8vw, 88px);
+            line-height: 0.98;
+            letter-spacing: -0.055em;
         }
 
         h2 {
-            font-size: 27px;
-            color: #60a5fa;
-            margin-bottom: 25px;
+            margin: 25px 0 0;
+            max-width: 700px;
+            color: #93c5fd;
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 500;
+            line-height: 1.35;
         }
 
-        p {
-            font-size: 17px;
-            color: #a1a1aa;
-            max-width: 850px;
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 55px;
+        }
+
+        .text-card {
+            padding: 32px;
+            background: rgba(13, 20, 36, 0.75);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .text-card p {
+            margin: 0;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .gallery-heading {
+            margin-bottom: 22px;
+        }
+
+        .gallery-heading h2 {
+            margin: 0;
+            color: var(--heading);
+            font-size: 27px;
+            font-weight: 700;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            margin: 40px 0;
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: 220px;
+            gap: 16px;
         }
 
         .gallery img {
             width: 100%;
-            height: 220px;
+            height: 100%;
+            display: block;
             object-fit: cover;
-            border-radius: 14px;
-            border: 1px solid #27272a;
-            transition: 0.3s;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            filter: saturate(0.85);
+            transition:
+                transform 0.3s ease,
+                filter 0.3s ease,
+                border-color 0.3s ease;
         }
 
         .gallery img:hover {
+            z-index: 2;
             transform: translateY(-5px);
-            border-color: #60a5fa;
+            filter: saturate(1.1);
+            border-color: rgba(96, 165, 250, 0.55);
         }
 
-        a {
-            display: inline-block;
-            margin-right: 10px;
-            margin-top: 15px;
-            padding: 12px 22px;
-            border-radius: 8px;
-            background: #2563eb;
+        .gallery img:nth-child(1) {
+            grid-column: span 4;
+        }
+
+        .gallery img:nth-child(2) {
+            grid-column: span 2;
+        }
+
+        .gallery img:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        .gallery img:nth-child(4) {
+            grid-column: span 2;
+        }
+
+        .gallery img:nth-child(5) {
+            grid-column: span 2;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 45px;
+            padding-top: 35px;
+            border-top: 1px solid var(--border);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 21px;
+            border: 1px solid transparent;
+            border-radius: 10px;
+            background: var(--primary);
             color: white;
+            font-size: 14px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: bold;
-            transition: 0.2s;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
         }
 
-        a:hover {
-            background: #3b82f6;
+        .button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
         }
 
-        .secondary {
-            background: #27272a;
+        .button.secondary {
+            background: var(--surface-light);
+            border-color: var(--border);
+            color: #dbeafe;
         }
 
-        .secondary:hover {
-            background: #3f3f46;
+        .button.secondary:hover {
+            background: #19253c;
+            border-color: rgba(96, 165, 250, 0.35);
         }
 
-        @media (max-width: 750px) {
+        .button:focus-visible,
+        .back-link:focus-visible {
+            outline: 3px solid var(--primary-light);
+            outline-offset: 4px;
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
             .container {
-                margin: 20px auto;
-                padding: 25px;
+                width: min(100% - 24px, 1150px);
+                padding: 30px 0;
             }
 
-            h1 {
-                font-size: 36px;
+            .topbar {
+                margin-bottom: 40px;
+            }
+
+            .hero {
+                padding-bottom: 45px;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
             }
 
             .gallery {
                 grid-template-columns: 1fr;
+                grid-auto-rows: 240px;
+            }
+
+            .gallery img:nth-child(1),
+            .gallery img:nth-child(2),
+            .gallery img:nth-child(3),
+            .gallery img:nth-child(4),
+            .gallery img:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
             }
         }
     </style>
@@ -107,49 +283,112 @@
 
 <body>
 
-    <div class="container">
+    <main class="container">
 
-        <h1>Artificial Intelligence</h1>
+        <nav class="topbar">
+            <a href="index.html" class="brand">BG.</a>
+            <a href="index.html" class="back-link">← Back to Profile</a>
+        </nav>
 
-        <h2>How Artificial Intelligence Is Changing Technology</h2>
+        <header class="hero">
 
-        <p>
-            Artificial Intelligence, also known as AI, is a field of computer science
-            focused on creating systems capable of performing tasks that normally
-            require human intelligence. These tasks include understanding language,
-            recognizing images, solving problems, analyzing information, making
-            predictions, and learning from data.
-        </p>
+            <span class="label">Technology</span>
 
-        <p>
-            Artificial intelligence is now used in healthcare, education, transportation,
-            finance, robotics, cybersecurity, and software development. Modern AI systems
-            can process large amounts of information quickly and assist people with
-            complex tasks. As technology continues to develop, artificial intelligence
-            is becoming an increasingly important part of modern computing and everyday life.
-        </p><div class="gallery">
-    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80"
-         alt="Artificial Intelligence">
+            <h1>Artificial Intelligence</h1>
 
-    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80"
-         alt="AI Technology">
+            <h2>
+                How intelligent systems are changing the way we build,
+                work and interact with technology.
+            </h2>
 
-    <img src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=800&q=80"
-         alt="Machine Learning">
+        </header>
 
-    <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=800&q=80"
-         alt="Artificial Intelligence Robot">
+        <section class="content">
 
-    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80"
-         alt="Computer Technology">
-             <a href="https://en.wikipedia.org/wiki/Artificial_intelligence">
-            Learn More About AI
-        </a>
+            <div class="text-card">
+                <p>
+                    Artificial Intelligence, also known as AI, is a field of
+                    computer science focused on developing systems capable of
+                    performing tasks that normally require human intelligence.
+                    These tasks include understanding natural language,
+                    recognizing images, solving problems, making predictions
+                    and learning patterns from large amounts of data.
+                </p>
+            </div>
 
-        <a href="index.html" class="secondary">
-            Back to About Me
-        </a>
-</div>
+            <div class="text-card">
+                <p>
+                    Artificial intelligence is now used across healthcare,
+                    education, transportation, finance, robotics, cybersecurity
+                    and software development. Modern AI systems can process
+                    information at significant scale and assist people with
+                    complex tasks. As these technologies continue to develop,
+                    AI is becoming an increasingly important part of modern
+                    computing and digital products.
+                </p>
+            </div>
+
+        </section>
+
+        <section>
+
+            <div class="gallery-heading">
+                <h2>AI & Modern Technology</h2>
+            </div>
+
+            <div class="gallery">
+
+                <img
+                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=85"
+                    alt="Artificial intelligence technology"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=85"
+                    alt="Artificial intelligence visualization"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=900&q=85"
+                    alt="Machine learning technology"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&w=900&q=85"
+                    alt="Robotics and artificial intelligence"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=85"
+                    alt="Computer hardware and technology"
+                >
+
+            </div>
+
+        </section>
+
+        <div class="actions">
+
+            <a
+                href="https://en.wikipedia.org/wiki/Artificial_intelligence"
+                class="button"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Learn More About AI ↗
+            </a>
+
+            <a href="index.html" class="button secondary">
+                ← Back to Profile
+            </a>
+
+        </div>
+
+        <footer>
+            Babak Gasimzade · Computer Science & Information Technology · 2026
+        </footer>
+
+    </main>
 
 </body>
 </html>
