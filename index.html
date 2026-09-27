@@ -3,102 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Babak Gasimzade</title>
+    <meta name="description" content="Personal portfolio and education profile of Babak Gasimzade">
+    <title>Babak Gasimzade | Profile</title>
 
     <style>
+        :root {
+            --background: #f5f7fb;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-soft: #eff6ff;
+            --text: #172033;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
+            --radius: 20px;
+        }
+
         * {
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f6f8;
-            color: #1f2937;
+            min-height: 100vh;
+            font-family: Inter, Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, #dbeafe 0, transparent 28%),
+                var(--background);
+            color: var(--text);
             line-height: 1.7;
         }
 
-        .container {
-            max-width: 950px;
-            margin: 60px auto;
-            padding: 50px;
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+        .page {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 70px 0;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 60px;
+            background: linear-gradient(135deg, #0f172a, #172554);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            color: white;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            right: -80px;
+            top: -90px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.22);
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 7px 13px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            border-radius: 999px;
+            color: #bfdbfe;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
         h1 {
-            margin-top: 0;
-            font-size: 42px;
-            color: #111827;
-            border-bottom: 4px solid #2563eb;
-            padding-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            max-width: 800px;
+            font-size: clamp(42px, 7vw, 72px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 20px 0 0;
+            color: #cbd5e1;
+            font-size: 18px;
+        }
+
+        .content {
+            display: grid;
+            gap: 28px;
+            margin-top: 28px;
+        }
+
+        .card {
+            padding: 38px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.04);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            background: var(--primary-soft);
+            border-radius: 10px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 800;
         }
 
         h2 {
-            margin-top: 40px;
-            font-size: 26px;
-            color: #2563eb;
+            margin: 0;
+            color: var(--text);
+            font-size: 27px;
+            letter-spacing: -0.02em;
         }
 
         h3 {
-            margin-top: 30px;
-            color: #374151;
+            margin: 30px 0 14px;
+            color: var(--primary);
+            font-size: 19px;
         }
 
         p {
-            font-size: 17px;
-            color: #4b5563;
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 16px;
         }
 
-        ul, ol {
-            padding-left: 30px;
+        .about {
+            max-width: 850px;
+        }
+
+        ul,
+        ol {
+            margin: 0;
+            padding-left: 25px;
         }
 
         li {
-            margin: 10px 0;
+            padding: 6px 0;
+            color: #334155;
+        }
+
+        li::marker {
+            color: var(--primary);
+            font-weight: 700;
         }
 
         ul ul,
         ol ol {
+            margin: 8px 0 10px;
+            padding: 12px 20px 12px 35px;
+            background: var(--surface-soft);
+            border-left: 3px solid var(--primary);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .topic {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .topic-text {
+            max-width: 650px;
+        }
+
+        .topic-text p {
             margin-top: 8px;
-            padding: 10px 20px 10px 35px;
-            background: #f8fafc;
-            border-left: 3px solid #2563eb;
-            border-radius: 6px;
         }
 
-        hr {
-            margin: 45px 0;
-            border: 0;
-            height: 1px;
-            background: #e5e7eb;
-        }
-
-        a {
-            display: inline-block;
-            padding: 12px 22px;
-            background: #2563eb;
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 190px;
+            padding: 13px 22px;
+            background: var(--primary);
+            border: 1px solid var(--primary);
+            border-radius: 10px;
             color: white;
+            font-size: 15px;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            transition: 0.2s;
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
-        a:hover {
-            background: #1d4ed8;
+        .button:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+        }
+
+        .button:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 3px;
+        }
+
+        footer {
+            padding: 28px 0 0;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
         }
 
         @media (max-width: 700px) {
-            .container {
-                margin: 20px;
-                padding: 30px;
+            .page {
+                width: min(100% - 24px, 1100px);
+                padding: 30px 0;
             }
 
-            h1 {
-                font-size: 32px;
+            .hero {
+                padding: 38px 28px;
+                border-radius: 20px;
+            }
+
+            .card {
+                padding: 28px 22px;
+            }
+
+            .topic {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
             }
         }
     </style>
@@ -106,110 +264,177 @@
 
 <body>
 
-    <div class="container">
+    <main class="page">
 
-        <h1>Babak Gasimzade</h1>
+        <header class="hero">
+            <span class="label">Student Profile</span>
 
-        <h2>About Me</h2>
+            <h1>Babak Gasimzade</h1>
 
-        <p>
-            Hello, my name is Babak Gasimzade.<br>
-            I am a Computer Science and Information Technology student.<br>
-            I am interested in web development, software development, and modern technologies.<br>
-            I have experience working with frontend and full-stack web development projects.<br>
-            My objective is to improve my technical and professional skills and build useful software products.<br>
-            In the future, I would like to continue my career in the European technology industry.
-        </p>
+            <p>
+                Computer Science & Information Technology student with an interest
+                in software engineering, web technologies and modern digital products.
+            </p>
+        </header>
 
-        <h2>Education</h2>
+        <div class="content">
 
-        <h3>Higher Secondary Education</h3>
+            <section class="card">
 
-        <ul>
-            <li>
-                Mathematics - 85%
+                <div class="section-heading">
+                    <span class="number">01</span>
+                    <h2>About Me</h2>
+                </div>
+
+                <p class="about">
+                    Hello, my name is Babak Gasimzade.<br>
+                    I am a Computer Science and Information Technology student.<br>
+                    I am interested in web development, software engineering and modern technologies.<br>
+                    I have experience working with frontend and full-stack web development projects.<br>
+                    My objective is to continuously improve my technical and professional skills while building useful software products.<br>
+                    In the future, I would like to develop my career in the European technology industry and contribute to ambitious digital projects.
+                </p>
+
+            </section>
+
+            <section class="card">
+
+                <div class="section-heading">
+                    <span class="number">02</span>
+                    <h2>Education</h2>
+                </div>
+
+                <h3>Higher Secondary Education</h3>
+
                 <ul>
-                    <li>Studied algebra, geometry, functions, and problem solving.</li>
-                </ul>
-            </li>
-
-            <li>
-                Computer Science - 90%
-                <ul>
-                    <li>Learned programming fundamentals, algorithms, and computer systems.</li>
-                </ul>
-            </li>
-
-            <li>
-                English - 80%
-                <ul>
-                    <li>Developed reading, writing, listening, and communication skills.</li>
-                </ul>
-            </li>
-
-            <li>
-                Physics - 82%
-                <ul>
-                    <li>Studied mechanics, electricity, energy, and physical principles.</li>
-                </ul>
-            </li>
-        </ul>
-
-        <h3>Bachelor Degree</h3>
-
-        <ol>
-            <li>
-                Computer Science and Information Technology Degree
-            </li>
-
-            <li>
-                1st Year
-                <ol type="a">
                     <li>
-                        Programming - 85%
-                        <ol type="i">
+                        Mathematics - 85%
+                        <ul>
                             <li>
-                                Introduction to programming concepts, algorithms, and problem solving.
+                                Studied algebra, geometry, mathematical functions
+                                and analytical problem solving.
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        Computer Science - 90%
+                        <ul>
+                            <li>
+                                Learned programming fundamentals, algorithms,
+                                computer systems and logical problem solving.
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        English - 80%
+                        <ul>
+                            <li>
+                                Developed academic reading, writing, listening
+                                and professional communication skills.
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        Physics - 82%
+                        <ul>
+                            <li>
+                                Studied mechanics, electricity, energy,
+                                motion and fundamental physical principles.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3>Bachelor Degree</h3>
+
+                <ol>
+                    <li>
+                        Computer Science and Information Technology Degree
+                    </li>
+
+                    <li>
+                        1st Year
+
+                        <ol type="a">
+                            <li>
+                                Programming - 85%
+
+                                <ol type="i">
+                                    <li>
+                                        Studied programming fundamentals,
+                                        algorithms, data structures and
+                                        computational problem solving.
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        2nd Year
+
+                        <ol type="a">
+                            <li>
+                                Web Development - 90%
+
+                                <ol type="i">
+                                    <li>
+                                        Studied HTML, CSS, JavaScript,
+                                        responsive web development and
+                                        modern web technologies.
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </li>
+
+                    <li>
+                        3rd Year
+
+                        <ol type="a">
+                            <li>
+                                Database Systems - 88%
+
+                                <ol type="i">
+                                    <li>
+                                        Studied relational databases, SQL,
+                                        database architecture and data management.
+                                    </li>
+                                </ol>
                             </li>
                         </ol>
                     </li>
                 </ol>
-            </li>
 
-            <li>
-                2nd Year
-                <ol type="a">
-                    <li>
-                        Web Development - 90%
-                        <ol type="i">
-                            <li>
-                                Studied HTML, CSS, JavaScript, frontend development, and web technologies.
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </li>
+            </section>
 
-            <li>
-                3rd Year
-                <ol type="a">
-                    <li>
-                        Database Systems - 88%
-                        <ol type="i">
-                            <li>
-                                Studied relational databases, SQL, database design, and data management.
-                            </li>
-                        </ol>
-                    </li>
-                </ol>
-            </li>
-        </ol>
+            <section class="card topic">
 
-        <hr>
+                <div class="topic-text">
+                    <h2>Interesting Topic</h2>
 
-        <a href="ai.html">Explore Artificial Intelligence</a>
+                    <p>
+                        Explore how artificial intelligence is influencing
+                        software, business and modern technology.
+                    </p>
+                </div>
 
-    </div>
+                <a href="ai.html" class="button">
+                    Explore AI →
+                </a>
+
+            </section>
+
+        </div>
+
+        <footer>
+            Babak Gasimzade · 2026
+        </footer>
+
+    </main>
 
 </body>
 </html>
